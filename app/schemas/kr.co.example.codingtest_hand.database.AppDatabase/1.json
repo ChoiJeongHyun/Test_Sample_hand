@@ -1,0 +1,64 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "454ce9553fd2466a73ad70824041a456",
+    "entities": [
+      {
+        "tableName": "Ranking",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`team` TEXT NOT NULL, `totalGameCount` INTEGER NOT NULL, `gameWinCount` INTEGER NOT NULL, `gameTieCount` INTEGER NOT NULL, `gameLoseCount` INTEGER NOT NULL, `totalGameScore` INTEGER NOT NULL, PRIMARY KEY(`team`))",
+        "fields": [
+          {
+            "fieldPath": "team",
+            "columnName": "team",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalGameCount",
+            "columnName": "totalGameCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gameWinCount",
+            "columnName": "gameWinCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gameTieCount",
+            "columnName": "gameTieCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gameLoseCount",
+            "columnName": "gameLoseCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalGameScore",
+            "columnName": "totalGameScore",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "team"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '454ce9553fd2466a73ad70824041a456')"
+    ]
+  }
+}

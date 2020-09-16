@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.co.example.codingtest_hand.views.MainViewModel" />
+
+        <variable
+            name="item"
+            type="kr.co.example.codingtest_hand.database.entity.Ranking" />
+
+        <variable
+            name="rankingPosition"
+            type="Integer" />
+
+        <variable
+            name="lastItemPosition"
+            type="Integer" />
+
+    </data>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <kr.co.example.codingtest_hand.widgets.RoundLinearLayout
+        android:id="@+id/view_activity_main_group"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:onLongClick="@{(view) -> vm.rankingRemove(item.team)}"
+        app:borderWidth="1dp"
+        app:borderColor="#0000FF"
+        app:rankingPosition="@{rankingPosition}"
+        app:totalSize="@{lastItemPosition}"
+        app:vm="@{vm}">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@{String.valueOf(rankingPosition)}"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_weight="1.5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@{item.team +`팀`}"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:text="@{String.valueOf(item.totalGameCount)}"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:text="@{String.valueOf(item.gameWinCount)}"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="@{String.valueOf(item.gameTieCount)}"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:text="@{String.valueOf(item.gameLoseCount)}"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:text="@{String.valueOf(item.totalGameScore)}"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_weight="1.5"/>
+
+    </kr.co.example.codingtest_hand.widgets.RoundLinearLayout>
+
+</RelativeLayout>
+
+</layout>

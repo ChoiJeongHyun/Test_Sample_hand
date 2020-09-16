@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.co.example.codingtest_hand.views.MainViewModel" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.MainActivity">
+
+        <TextView
+            android:id="@+id/view_activity_main_title"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#87CEEB"
+            android:gravity="left|center"
+            android:paddingStart="12dp"
+            android:text="순위표"
+            android:textColor="#000"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/view_activity_main_group"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_below="@id/view_activity_main_title"
+            android:onClick="@{() -> vm.sortRefresh()}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="순위"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="팀"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="경기"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="승"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="무"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="패"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="승점"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/view_activity_main_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/view_activity_main_group1"
+            android:layout_below="@id/view_activity_main_group"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:rankingItems="@{vm.rankingItems}"
+            app:vm="@{vm}"
+            />
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/view_activity_main_group1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:background="#87CEEB">
+
+            <TextView
+                android:id="@+id/view_dummy_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="10dp"
+                android:text="팀 :"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/view_activity_main_et_team_name"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/view_dummy_text"
+                android:text="@={vm.teamName}"/>
+
+            <TextView
+                android:id="@+id/view_dummy_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_dummy_text"
+                android:paddingStart="20dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="10dp"
+                android:text="승 : "
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/view_activity_main_et_win_count"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_activity_main_et_team_name"
+                android:layout_toRightOf="@id/view_dummy_text1"
+                android:inputType="number"
+                android:text="@={vm.winCount}"/>
+
+            <TextView
+                android:id="@+id/view_dummy_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_dummy_text"
+                android:layout_toRightOf="@id/view_activity_main_et_win_count"
+                android:paddingTop="20dp"
+                android:paddingEnd="10dp"
+                android:text="무 : "
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/view_activity_main_et_tie_count"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_activity_main_et_team_name"
+                android:layout_toRightOf="@id/view_dummy_text2"
+                android:text="@={vm.tieCount}"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/view_dummy_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_dummy_text"
+                android:layout_toRightOf="@id/view_activity_main_et_tie_count"
+                android:paddingTop="20dp"
+                android:paddingEnd="10dp"
+                android:text="패 : "
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/view_activity_main_et_lose_count"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_activity_main_et_team_name"
+                android:layout_toRightOf="@id/view_dummy_text3"
+                android:text="@={vm.loseCount}"
+                android:inputType="number" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:text="추가"
+                android:onClick="@{() -> vm.rankingAdd()}"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>
